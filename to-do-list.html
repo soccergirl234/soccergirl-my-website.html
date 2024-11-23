@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+        margin: 0;
+    }
+    
+    .container {
+        background: rgb(184, 88, 88);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #332323;
+        border-radius: 4px;
+    }
+    
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #541dad;
+        color: rgb(7, 4, 4);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #121d12;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    li button {
+        background: none;
+        border: none;
+        color: #d9534f;
+        cursor: pointer;
+    }
+    
+    li button:hover {
+        color: #c9302c;
+    }
+    
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', loadTasks);
+
+function addTask() {
+    const taskInput = document.getElementById('taskInput');
+    const task = taskInput.value.trim();
+
+    if (task) {
+        const tasks = getTasks();
+        tasks.push(task);
+        setTasks(tasks);
+        renderTasks();
+        taskInput.value = '';
+    }
+}
+
+function removeTask(index) {
+    const tasks = getTasks();
+    tasks.splice(index, 1);
+    setTasks(tasks);
+    renderTasks();
+}
+
+function getTasks() {
+    return JSON.parse(localStorage.getItem('tasks')) || [];
+}
+
+function setTasks(tasks) {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function renderTasks() {
+    const taskList = document.getElementById('taskList');
+    const tasks = getTasks();
+    
+    taskList.innerHTML = '';
+
+    tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.textContent = task;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = () => removeTask(index);
+
+        li.appendChild(removeBtn);
+        taskList.appendChild(li);
+    });
+}
+
+function loadTasks() {
+    renderTasks();
+}
+
+</script>

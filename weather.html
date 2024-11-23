@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Widget</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="weather-widget">
+        <div class="weather-header">
+            <h2>Weather</h2>
+            <p class="location">Nairobi, Kenya</p>
+        </div>
+        <div class="weather-content">
+            <div class="temperature">25°C</div>
+            <div class="conditions">Sunny</div>
+        </div>
+        <div class="weather-footer">
+            <p>Updated: 09:00 AM</p>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #da2e2e;
+        margin: 0;
+    }
+    
+    .weather-widget {
+        background: #ee1e6e;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(18, 182, 40, 0.1);
+        text-align: center;
+        width: 250px;
+    }
+    
+    .weather-header {
+        border-bottom: 1px solid #5120a0;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .location {
+        font-size: 1.2em;
+        color: #555;
+    }
+    
+    .weather-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    
+    .temperature {
+        font-size: 2.5em;
+        color: #333;
+    }
+    
+    .conditions {
+        font-size: 1.2em;
+        color: #020202;
+    }
+    
+    .weather-footer {
+        border-top: 1px solid #0c0b0b;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    
+    .weather-footer p {
+        font-size: 0.9em;
+        color: #8106a7;
+    }
+    
+</style>

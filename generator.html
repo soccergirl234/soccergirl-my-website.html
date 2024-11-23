@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quote-container">
+        <div id="quote-box">
+            <p id="quote">"The best way to predict the future is to create it." - Peter Drucker</p>
+        </div>
+        <button id="new-quote">New Quote</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+    .quote-container {
+        background: rgb(22, 34, 204);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(8, 125, 146, 0.1);
+        text-align: center;
+        width: 60%;
+        max-width: 600px;
+    }
+    
+    #quote-box {
+        margin-bottom: 20px;
+    }
+    
+    #quote {
+        font-size: 1.2em;
+        color: #be2278;
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: #922ad8;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #147ba3;
+    }
+    
+</style>
+
+<script>
+    const quotes = [
+    { text: "The best way to predict the future is to create it.", author: "Peter Drucker" },
+    { text: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
+    { text: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" },
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { text: "You miss 100% of the shots you don’t take.", author: "Wayne Gretzky" }
+];
+
+function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+}
+
+function displayQuote() {
+    const quote = getRandomQuote();
+    const quoteText = `"${quote.text}" - ${quote.author}`;
+    document.getElementById('quote').innerText = quoteText;
+}
+
+document.getElementById('new-quote').addEventListener('click', displayQuote);
+
+// Display an initial quote when the page loads
+displayQuote();
+
+</script>

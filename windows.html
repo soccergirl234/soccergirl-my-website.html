@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Popup </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="openModalBtn">Open Modal</button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <h2>Modal Header</h2>
+            <p>This is a simple modal popup .</p>
+            <form>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: #2d5de2;
+        color: rgb(214, 21, 21);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #b8a124;
+        transition: 3s ;
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(130, 20, 182, 0.87);
+    }
+    
+    .modal-content {
+        background-color: rgb(137, 235, 26);
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #d61c1c;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 8px;
+    }
+    
+    .closeBtn {
+        color: #1cda4c;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .closeBtn:hover,
+    .closeBtn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+</style>
+
+<script>
+    // Get modal element
+const modal = document.getElementById("myModal");
+// Get open modal button
+const openModalBtn = document.getElementById("openModalBtn");
+// Get close button
+const closeBtn = document.getElementsByClassName("closeBtn")[0];
+
+// Listen for open click
+openModalBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+});
+
+// Listen for close click
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Listen for outside click
+window.addEventListener("click", (e) => {
+    if (e.target == modal) {
+        modal.style.display = "none";
+    }
+});
+
+</script>
